@@ -1,0 +1,170 @@
+
+(() => {
+    const API_BASE_URL = 'http://localhost:8080/PahanaEdu-BookShop-Server/api';
+    let allInvoices = [];
+
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+    const searchInput = document.getElementById('searchInput');
+
+    function getToday() {
+        const now = new Date();
+        return now.toISOString().split('T')[0];
+    }
+
+    function formatDate(input) {
+        if (!input)
+            return 'Invalid Date';
+        try {
+            const cleanedInput = input.replace(/\[.*\]$/, '');
+            const parsed = new Date(cleanedInput);
+            if (isNaN(parsed.getTime()))
+                return 'Invalid Date';
+            return parsed.toISOString().split('T')[0];
+        } catch {
+            return 'Invalid Date';
+        }
+    }
+
+    function renderInvoices(invoices) {
+        const table = document.getElementById('invoiceTable');
+        table.innerHTML = '';
+        invoices.forEach(inv => {
+            const dateString = formatDate(inv.invoiceDate);
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="p-3">${inv.invoiceNumber}</td>
+                <td class="p-3">${dateString}</td>
+                <td class="p-3">${inv.customerId}</td>
+                <td class="p-3">${inv.userId}</td>
+                <td class="p-3">Rs. ${inv.totalAmount}</td>
+                <td class="p-3">Rs. ${inv.discountAmount}</td>
+                <td class="p-3 font-semibold">Rs. ${inv.netAmount}</td>
+                <td class="p-3 text-sm">${inv.paymentStatus}</td>
+              `;
+            table.appendChild(row);
+        });
+    }
+
+    function filterInvoicesByDateRange(invoices, start, end) {
+        return invoices.filter(inv => {
+            const invDate = new Date(inv.invoiceDate.replace(/\[.*\]$/, ''));
+            return invDate >= start && invDate <= end;
+        });
+    }
+
+    function updateDisplayedInvoices() {
+        const start = new Date(startDateInput.value);
+        let end = new Date(endDateInput.value);
+
+        if (!isNaN(end.getTime())) {
+            end.setDate(end.getDate() + 1);
+            end.setHours(0, 0, 0, 0);
+        }
+
+        let filtered = [];
+        if (!isNaN(start.getTime()) && !isNaN(end.getTime())) {
+            filtered = filterInvoicesByDateRange(allInvoices, start, end);
+        } else {
+            filtered = allInvoices;
+        }
+
+        const searchText = searchInput.value.toLowerCase();
+        const finalFiltered = filtered.filter(inv =>
+            inv.invoiceNumber.toLowerCase().includes(searchText)
+        );
+
+        renderInvoices(finalFiltered);
+    }
+
+    function filterInvoicesByDateRange(invoices, start, end) {
+        return invoices.filter(inv => {
+            const invDate = new Date(inv.invoiceDate.replace(/\[.*\]$/, ''));
+            return invDate >= start && invDate < end;
+        });
+    }
+
+    function setupSearch() {
+        searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+
+            const start = new Date(startDateInput.value);
+            const end = new Date(endDateInput.value);
+
+            if (!isNaN(end.getTime())) {
+                end.setDate(end.getDate() + 1);
+                end.setHours(0, 0, 0, 0);
+            }
+
+            const filteredByDate = filterInvoicesByDateRange(allInvoices, start, end);
+
+            const filteredBySearch = filteredByDate.filter(inv =>
+                inv.invoiceNumber.toLowerCase().includes(searchText)
+            );
+
+            renderInvoices(filteredBySearch);
+        });
+    }
+
+    function exportToExcel() {
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+        const isRangeValid = !isNaN(startDate.getTime()) && !isNaN(endDate.getTime());
+
+        const filteredInvoices = isRangeValid
+                ? filterInvoicesByDateRange(allInvoices, startDate, endDate)
+                : allInvoices;
+
+        const ws_data = [
+            ['Invoice #', 'Date', 'Customer ID', 'User ID', 'Total', 'Discount', 'Net Amount', 'Status']
+        ];
+
+        filteredInvoices.forEach(inv => {
+            const cleanDate = formatDate(inv.invoiceDate);
+            ws_data.push([
+                inv.invoiceNumber,
+                cleanDate,
+                inv.customerId,
+                inv.userId,
+                inv.totalAmount,
+                inv.discountAmount,
+                inv.netAmount,
+                inv.paymentStatus
+            ]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet(ws_data);
+
+        ws['!cols'] = ws_data[0].map((_, i) => ({
+                wch: Math.max(...ws_data.map(row => (row[i] ? row[i].toString().length : 10))) + 2
+            }));
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Invoices");
+
+        const fileNameSuffix = isRangeValid
+                ? `_${startDate.toISOString().split('T')[0]}_to_${endDate.toISOString().split('T')[0]}`
+                : '';
+        XLSX.writeFile(wb, `Invoice_List${fileNameSuffix}.xlsx`);
+    }
+
+    document.getElementById('exportBtn').addEventListener('click', exportToExcel);
+
+    // Listen to date range changes
+    startDateInput.addEventListener('change', updateDisplayedInvoices);
+    endDateInput.addEventListener('change', updateDisplayedInvoices);
+
+    // Initial setup
+    fetch(`${API_BASE_URL}/invoices`)
+            .then(res => res.json())
+            .then(invoices => {
+                allInvoices = invoices;
+
+                const today = getToday();
+                startDateInput.value = today;
+                endDateInput.value = today;
+
+                updateDisplayedInvoices();
+                setupSearch();
+            });
+})();

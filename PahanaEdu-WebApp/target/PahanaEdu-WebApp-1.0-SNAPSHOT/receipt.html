@@ -6,26 +6,7 @@
     <title>Print Receipt</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-print-color-adjust: exact; /* Ensures colors print correctly in Chrome */
-            print-color-adjust: exact;
-        }
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-            }
-            .no-print {
-                display: none;
-            }
-            .receipt-container {
-                box-shadow: none;
-                border: none;
-            }
-        }
-    </style>
+    <link href="css/print_receipt.css" rel="stylesheet" type="text/css"/>
 </head>
 <body class="bg-gray-100">
     <div class="max-w-md mx-auto my-8 p-6 bg-white rounded-lg shadow-lg receipt-container">
@@ -92,55 +73,6 @@
     <div class="text-center mt-4 no-print">
         <button id="print-btn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Print Receipt</button>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const receiptData = JSON.parse(sessionStorage.getItem('lastReceiptData'));
-            const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-
-            if (!receiptData || !loggedInUser) {
-                document.body.innerHTML = '<p class="text-center text-red-500">No receipt data found. Please generate an invoice first.</p>';
-                return;
-            }
-            
-            const formatCurrency = (amount) => `LKR ${Number(amount).toFixed(2)}`;
-
-            // Populate receipt details
-            document.getElementById('receipt-invoice-number').textContent = receiptData.invoice.invoiceNumber;
-            document.getElementById('receipt-date').textContent = new Date().toLocaleString();
-            document.getElementById('receipt-cashier').textContent = loggedInUser.name || loggedInUser.username;
-            document.getElementById('receipt-customer').textContent = receiptData.customer.name;
-
-            const itemsBody = document.getElementById('receipt-items-body');
-            itemsBody.innerHTML = '';
-            receiptData.invoice.invoiceItems.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="py-1 text-left">${item.name}</td>
-                    <td class="py-1 text-center">${item.quantity}</td>
-                    <td class="py-1 text-right">${formatCurrency(item.unitPrice)}</td>
-                    <td class="py-1 text-right">${formatCurrency(item.itemTotal)}</td>
-                `;
-                itemsBody.appendChild(row);
-            });
-
-            document.getElementById('receipt-subtotal').textContent = formatCurrency(receiptData.invoice.totalAmount);
-            document.getElementById('receipt-discount').textContent = formatCurrency(receiptData.invoice.discountAmount);
-            document.getElementById('receipt-total').textContent = formatCurrency(receiptData.invoice.netAmount);
-            
-            // Auto-trigger print dialog after a short delay
-            setTimeout(() => {
-                window.print();
-            }, 500);
-
-            // Clean up session storage after printing is done
-            window.onafterprint = () => {
-                sessionStorage.removeItem('lastReceiptData');
-                window.close();
-            };
-            
-            document.getElementById('print-btn').addEventListener('click', () => window.print());
-        });
-    </script>
+    <script src="js/print_receipt.js" type="text/javascript"></script>
 </body>
 </html>

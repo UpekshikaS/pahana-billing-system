@@ -2,111 +2,127 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-        <script src="https://cdn.tailwindcss.com"></script>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Help - PahanaEdu Book Shop</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Help - PahanaEdu Book Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/help.css" rel="stylesheet" type="text/css"/>
 </head>
 <body class="bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800">
 
-    <div class="max-w-4xl mx-auto py-12 px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto py-12 px-6 lg:px-8">
         <h1 class="text-4xl font-extrabold text-indigo-800 mb-8 pb-4 border-b-2 border-indigo-200 text-center">
-            PahanaEdu Book Shop - Help Center
+            PahanaEdu Book Shop - Help & User Guide
         </h1>
 
         <div class="space-y-10">
+
+            <!-- Getting Started -->
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">📚</span> Purpose of this Page
+                    <span class="mr-3 text-3xl">🚀</span> Getting Started
                 </h2>
-                <p class="text-gray-700 leading-relaxed">
-                    This page is designed to assist users of the PahanaEdu Book Shop system with managing customer details, resolving common issues, and understanding how to use features effectively.
-                </p>
+                <ol class="list-decimal pl-8 text-gray-700 space-y-3">
+                    <li>Login using your assigned <strong>username</strong> and <strong>password</strong>.</li>
+                    <li>Once logged in, the dashboard will show your quick actions and system overview.</li>
+                    <li>Navigation menu on the left allows you to access:
+                        <ul class="list-disc pl-6 mt-2 space-y-2">
+                            <li><strong>Customers</strong> – Manage customer records.</li>
+                            <li><strong>Products</strong> – Add, update, and view products in stock.</li>
+                            <li><strong>Billing</strong> – Create invoices and process sales.</li>
+                            <li><strong>Reports</strong> – View sales summaries and inventory reports.</li>
+                            <li><strong>Notifications</strong> – System alerts and reminders.</li>
+                        </ul>
+                    </li>
+                </ol>
             </div>
 
+            <!-- Customer Management -->
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
                     <span class="mr-3 text-3xl">👤</span> Customer Management
                 </h2>
                 <ul class="list-disc pl-8 text-gray-700 space-y-3">
-                    <li><strong>View Customers:</strong> All customers are listed in the customer table.</li>
-                    <li><strong>View Details:</strong> Click on the <span class="text-indigo-600 font-semibold">Account No</span> to open a popup with the customer's details.</li>
-                    <li><strong>Edit Customer:</strong> Click the <span class="text-yellow-600">✏️ Edit</span> button to open the modal and update customer info.</li>
-                    <li><strong>Delete Customer:</strong> Click the <span class="text-red-600">🗑️ Delete</span> button and confirm to remove a customer. This action is permanent.</li>
-                </ul>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">📝</span> Adding or Updating Customers
-                </h2>
-                <ul class="list-disc pl-8 text-gray-700 space-y-3">
-                    <li>Click <span class="font-semibold text-green-600">"Add Customer"</span> to open the input modal.</li>
-                    <li>Fill in all required fields. Make sure:
-                        <ul class="list-circle pl-6 mt-2 space-y-2">
-                            <li>📧 Email is in a valid format (e.g., john@example.com).</li>
-                            <li>📱 Phone number has at least 10 numeric digits.</li>
+                    <li><strong>View Customers:</strong> The customer table lists all registered customers.</li>
+                    <li><strong>View Details:</strong> Click on <span class="text-indigo-600 font-semibold">Account No</span> to open the details popup.</li>
+                    <li><strong>Add Customer:</strong> Click <span class="text-green-600 font-semibold">"Add Customer"</span> and fill required details:
+                        <ul class="list-disc pl-6 mt-2 space-y-2">
+                            <li>Email format: <code>name@example.com</code></li>
+                            <li>Phone: minimum 10 digits, numbers only.</li>
                         </ul>
                     </li>
-                    <li>Click Save. You will see a success or failure notification.</li>
+                    <li><strong>Edit Customer:</strong> Click the <span class="text-yellow-600">✏️ Edit</span> button to update information.</li>
+                    <li><strong>Delete Customer:</strong> Click <span class="text-red-600">🗑️ Delete</span> and confirm (cannot be undone).</li>
                 </ul>
             </div>
 
+            <!-- Product Management -->
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">💡</span> Useful Tips
+                    <span class="mr-3 text-3xl">📦</span> Product & Stock Management
                 </h2>
                 <ul class="list-disc pl-8 text-gray-700 space-y-3">
-                    <li>Use your browser's search (Ctrl+F or Cmd+F) to quickly find specific customers on the page.</li>
-                    <li>Keep customer contact details up-to-date to ensure smooth communication.</li>
-                    <li>Invalid email or phone number formats will prevent the form from submitting.</li>
+                    <li><strong>View Products:</strong> All items are listed in the products table with stock levels.</li>
+                    <li><strong>Add Product:</strong> Use <span class="text-green-600 font-semibold">"Add Product"</span> to insert a new book or item.</li>
+                    <li><strong>Edit Product:</strong> Update name, price, or quantity using the edit button.</li>
+                    <li><strong>Delete Product:</strong> Remove items no longer sold. This action is permanent.</li>
+                    <li><strong>Stock Updates:</strong> Keep stock quantities accurate to prevent selling out-of-stock items.</li>
                 </ul>
             </div>
 
+            <!-- Billing Process -->
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">❓</span> Frequently Asked Questions (FAQ)
+                    <span class="mr-3 text-3xl">🧾</span> Billing Process
                 </h2>
-                <div class="text-gray-700 space-y-5">
-                    <div>
-                        <strong class="text-indigo-600">Q: Can I undo a deleted customer?</strong><br>
-                        A: No, customer deletion is a permanent action and cannot be undone. Please confirm before proceeding.
-                    </div>
-                    <div>
-                        <strong class="text-indigo-600">Q: What happens if I enter an invalid email format?</strong><br>
-                        A: An alert message will be displayed, and the form will not allow submission until corrected.
-                    </div>
-                    <div>
-                        <strong class="text-indigo-600">Q: Is the phone number format flexible?</strong><br>
-                        A: The phone number must be numeric and contain at least 10 digits to be accepted.
-                    </div>
-                </div>
+                <ol class="list-decimal pl-8 text-gray-700 space-y-3">
+                    <li>Go to <strong>Billing</strong> section from the menu.</li>
+                    <li>Select a customer (or add a new one).</li>
+                    <li>Search and add products to the bill by name or ID.</li>
+                    <li>Confirm quantities and pricing.</li>
+                    <li>Click <span class="text-green-600 font-semibold">"Generate Invoice"</span> to complete the sale.</li>
+                    <li>System automatically updates stock and saves the transaction.</li>
+                </ol>
             </div>
 
+            <!-- Reports -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
+                    <span class="mr-3 text-3xl">📊</span> Reports & Analytics
+                </h2>
+                <p class="text-gray-700 mb-3">Admins can access reports to monitor business performance:</p>
+                <ul class="list-disc pl-8 text-gray-700 space-y-3">
+                    <li><strong>Sales Reports:</strong> Filter by date range to view sales totals.</li>
+                    <li><strong>Inventory Reports:</strong> See which products are running low.</li>
+                    <li><strong>Export:</strong> Download reports for offline analysis.</li>
+                </ul>
+            </div>
+
+            <!-- Notifications -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
+                    <span class="mr-3 text-3xl">🔔</span> Notifications
+                </h2>
+                <ul class="list-disc pl-8 text-gray-700 space-y-3">
+                    <li>View all alerts from the <strong>Notifications</strong> menu.</li>
+                    <li>System sends reminders for low stock and pending bills.</li>
+                    <li>Click a notification to view related records.</li>
+                </ul>
+            </div>
+
+            <!-- Support -->
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
                     <span class="mr-3 text-3xl">📞</span> Contact Support
                 </h2>
                 <p class="text-gray-700 leading-relaxed">
-                    If you encounter any issues not addressed on this page or require further assistance, please don't hesitate to contact our system administrator:
+                    For any issues or questions not covered here, please contact the system administrator:
                     <br><strong class="block mt-2">Email:</strong> <a href="mailto:support@pahanaedu.lk" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200">support@pahanaedu.lk</a>
                     <br><strong>Phone:</strong> +94 77 123 4567
                 </p>
             </div>
         </div>
-
-        <footer class="text-center text-gray-500 text-sm mt-12 pt-6 border-t border-gray-200">
-            &copy; 2025 PahanaEdu Book Shop. All rights reserved.
-        </footer>
     </div>
 
 </body>

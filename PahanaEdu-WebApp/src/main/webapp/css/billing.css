@@ -1,0 +1,30 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Aug 15, 2025, 4:01:17 AM
+    Author     : Upeshika Sewwandi
+*/
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.table-cell-input {
+    width: 60px;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #d1d5db;
+    text-align: center;
+}
+
+#customer-search-results {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#product-suggestions {
+    max-height: 240px;
+    overflow-y: auto;
+}
