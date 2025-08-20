@@ -18,7 +18,17 @@ import java.sql.SQLException;
 @Path("/invoices")
 public class InvoiceResource {
 
-    private final InvoiceDAO invoiceDAO = new InvoiceDAO();
+    private final InvoiceDAO invoiceDAO;
+
+    // Default constructor for production
+    public InvoiceResource() {
+        this.invoiceDAO = new InvoiceDAO();
+    }
+
+    // Constructor for testing
+    public InvoiceResource(InvoiceDAO invoiceDAO) {
+        this.invoiceDAO = invoiceDAO;
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

@@ -17,6 +17,14 @@ public class Customer {
     public Customer() {
     }
 
+    // Add this constructor for your tests
+    public Customer(int customerId, String name, String telephone) {
+        this.customerId = customerId;
+        this.name = name;
+        this.telephone = telephone;
+    }
+
+    // Getters and setters...
     public int getCustomerId() {
         return customerId;
     }

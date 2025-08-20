@@ -1,3 +1,4 @@
+com\pahanaedu\bookshop\dao\IUserDAO.class
 com\pahanaedu\bookshop\dao\ReturnDAO.class
 com\pahanaedu\bookshop\dto\StockItemDTO.class
 com\pahanaedu\bookshop\model\ProfileUpdateRequest.class

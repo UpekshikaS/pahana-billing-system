@@ -3,20 +3,31 @@ package com.pahanaedu.bookshop.resource;
 import com.pahanaedu.bookshop.dao.CustomerDAO;
 import com.pahanaedu.bookshop.dao.NotificationDAO;
 import com.pahanaedu.bookshop.model.Customer;
-import com.pahanaedu.bookshop.model.User;
-import jakarta.servlet.http.HttpServletRequest;
+
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
 import java.sql.SQLException;
 import java.util.List;
 
 @Path("/customers")
 public class CustomerResource {
 
-    private final CustomerDAO customerDAO = new CustomerDAO();
-    private final NotificationDAO notificationDAO = new NotificationDAO();
+    private CustomerDAO customerDAO;
+    private NotificationDAO notificationDAO;
+
+    // Default constructor
+    public CustomerResource() {
+        this.customerDAO = new CustomerDAO();
+        this.notificationDAO = new NotificationDAO();
+    }
+
+    // Constructor for tests (inject mocks)
+    public CustomerResource(CustomerDAO customerDAO, NotificationDAO notificationDAO) {
+        this.customerDAO = customerDAO;
+        this.notificationDAO = notificationDAO;
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -57,9 +68,10 @@ public class CustomerResource {
     public Response addCustomer(Customer customer) {
         try {
             customerDAO.addCustomer(customer);
-            // Create a notification for the added customer
+
             String message = "A new customer '" + customer.getName() + "' has been added.";
-            notificationDAO.createNotification(message, null); // Pass null for userId to make it a general notification
+            notificationDAO.createNotification(message, null);
+
             return Response.status(Response.Status.CREATED).entity(customer).build();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,8 +91,10 @@ public class CustomerResource {
             if (existingCustomer != null) {
                 updatedCustomer.setCustomerId(id);
                 customerDAO.updateCustomer(updatedCustomer);
+
                 String message = "Customer '" + existingCustomer.getName() + "' has been updated.";
-                notificationDAO.createNotification(message, null); // Pass null for userId
+                notificationDAO.createNotification(message, null);
+
                 return Response.ok(updatedCustomer).build();
             } else {
                 return Response.status(Response.Status.NOT_FOUND).entity("Customer not found.").build();
@@ -100,9 +114,10 @@ public class CustomerResource {
             Customer customerToDelete = customerDAO.getCustomerById(id);
             if (customerToDelete != null) {
                 customerDAO.deleteCustomer(id);
-                // Create a notification for the deleted customer
+
                 String message = "Customer '" + customerToDelete.getName() + "' has been deleted.";
-                notificationDAO.createNotification(message, null); // Pass null for userId
+                notificationDAO.createNotification(message, null);
+
                 return Response.noContent().build();
             } else {
                 return Response.status(Response.Status.NOT_FOUND).entity("Customer not found.").build();

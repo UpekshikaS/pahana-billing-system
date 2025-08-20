@@ -13,7 +13,17 @@ import com.pahanaedu.bookshop.model.ProfileUpdateRequest;
 @Path("/users")
 public class UserResource {
 
-    private final UserDAO userDAO = new UserDAO();
+    private final UserDAO userDAO;
+
+    // Default constructor for normal use
+    public UserResource() {
+        this.userDAO = new UserDAO();
+    }
+
+    // Constructor for testing (dependency injection)
+    public UserResource(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

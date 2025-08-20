@@ -12,8 +12,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO {
+public class UserDAO implements IUserDAO {
 
+    @Override
     public User getUserByUsername(String username) throws SQLException {
         String sql = "SELECT * FROM users WHERE username = ?";
         try (Connection conn = DBConnection.getInstance().getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -28,6 +29,7 @@ public class UserDAO {
         return null;
     }
 
+    @Override
     public void addUser(User user) throws SQLException {
         String hashedPassword = BCrypt.hashpw(user.getPasswordHash(), BCrypt.gensalt());
 
@@ -46,6 +48,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public boolean checkPassword(String plainPassword, String hashedPassword) {
 
         try {
@@ -61,6 +64,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public List<User> getAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
@@ -73,6 +77,7 @@ public class UserDAO {
         return users;
     }
 
+    @Override
     public void updateUser(User user) throws SQLException {
         String sql = "UPDATE users SET role = ?, name = ?, email = ?, phone = ?, address = ? WHERE user_id = ?";
         try (Connection conn = DBConnection.getInstance().getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -88,6 +93,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public void deleteUser(int userId) throws SQLException {
         String sql = "DELETE FROM users WHERE user_id = ?";
         try (Connection conn = DBConnection.getInstance().getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -114,6 +120,7 @@ public class UserDAO {
         return user;
     }
 
+    @Override
     public void updateUserProfile(int userId, ProfileUpdateRequest request) throws SQLException {
         String sql = "UPDATE users SET name = ?, email = ?, phone = ?, address = ? WHERE user_id = ?";
         try (Connection conn = DBConnection.getInstance().getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -128,6 +135,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public void changeUserPassword(int userId, String newPassword) throws SQLException {
         String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
         String sql = "UPDATE users SET password_hash = ? WHERE user_id = ?";
@@ -140,6 +148,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public User getUserById(int userId) throws SQLException {
         String sql = "SELECT * FROM users WHERE user_id = ?";
         try (Connection conn = DBConnection.getInstance().getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
