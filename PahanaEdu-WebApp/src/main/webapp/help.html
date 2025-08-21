@@ -7,31 +7,32 @@
     <title>Help - PahanaEdu Book Shop</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="css/help.css" rel="stylesheet" type="text/css"/>
 </head>
-<body class="bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800">
+<body class="bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800 font-inter">
 
-    <div class="max-w-5xl mx-auto py-12 px-6 lg:px-8">
-        <h1 class="text-4xl font-extrabold text-indigo-800 mb-8 pb-4 border-b-2 border-indigo-200 text-center">
-            PahanaEdu Book Shop - Help & User Guide
+    <div class="max-w-6xl mx-auto py-12 px-6 lg:px-8">
+        <h1 class="text-5xl font-extrabold text-indigo-900 mb-12 pb-6 border-b-4 border-indigo-300 text-center tracking-wide">
+            PahanaEdu Book Shop – Help & User Guide
         </h1>
 
-        <div class="space-y-10">
+        <div class="grid md:grid-cols-2 gap-10">
 
             <!-- Getting Started -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">🚀</span> Getting Started
+            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-transform hover:-translate-y-1">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-700 rounded-full mr-4 shadow">
+                        <i class="fas fa-rocket text-xl"></i>
+                    </span>
+                    Getting Started
                 </h2>
                 <ol class="list-decimal pl-8 text-gray-700 space-y-3">
-                    <li>Login using your assigned <strong>username</strong> and <strong>password</strong>.</li>
-                    <li>Once logged in, the dashboard will show your quick actions and system overview.</li>
-                    <li>Navigation menu on the left allows you to access:
+                    <li>Dashboard shows quick actions and system overview.</li>
+                    <li>Navigation menu allows access to:
                         <ul class="list-disc pl-6 mt-2 space-y-2">
                             <li><strong>Customers</strong> – Manage customer records.</li>
                             <li><strong>Products</strong> – Add, update, and view products in stock.</li>
                             <li><strong>Billing</strong> – Create invoices and process sales.</li>
-                            <li><strong>Reports</strong> – View sales summaries and inventory reports.</li>
+                            <li><strong>Reports</strong> – View summaries and inventory reports.</li>
                             <li><strong>Notifications</strong> – System alerts and reminders.</li>
                         </ul>
                     </li>
@@ -39,89 +40,107 @@
             </div>
 
             <!-- Customer Management -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">👤</span> Customer Management
+            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-transform hover:-translate-y-1">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-700 rounded-full mr-4 shadow">
+                        <i class="fas fa-user text-xl"></i>
+                    </span>
+                    Customer Management
                 </h2>
                 <ul class="list-disc pl-8 text-gray-700 space-y-3">
-                    <li><strong>View Customers:</strong> The customer table lists all registered customers.</li>
-                    <li><strong>View Details:</strong> Click on <span class="text-indigo-600 font-semibold">Account No</span> to open the details popup.</li>
-                    <li><strong>Add Customer:</strong> Click <span class="text-green-600 font-semibold">"Add Customer"</span> and fill required details:
+                    <li><strong>View Customers:</strong> See all registered customers.<br>(click on Customer ID to See the customer details)</li>
+                    <li><strong>View Details:</strong> Click <span class="text-indigo-600 font-semibold">Account No</span> to open popup.</li>
+                    <li><strong>Add Customer:</strong> Use <span class="text-green-600 font-semibold">"Add Customer"</span>.
                         <ul class="list-disc pl-6 mt-2 space-y-2">
                             <li>Email format: <code>name@example.com</code></li>
-                            <li>Phone: minimum 10 digits, numbers only.</li>
+                            <li>Phone: 10+ digits, numbers only.</li>
                         </ul>
                     </li>
-                    <li><strong>Edit Customer:</strong> Click the <span class="text-yellow-600">✏️ Edit</span> button to update information.</li>
-                    <li><strong>Delete Customer:</strong> Click <span class="text-red-600">🗑️ Delete</span> and confirm (cannot be undone).</li>
+                    <li><strong>Edit Customer:</strong> <span class="text-yellow-600"><i class="fas fa-pen"></i> Edit</span></li>
+                    <li><strong>Delete Customer:</strong> <span class="text-red-600"><i class="fas fa-trash"></i> Delete</span></li>
                 </ul>
             </div>
 
             <!-- Product Management -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">📦</span> Product & Stock Management
+            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-transform hover:-translate-y-1">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="flex items-center justify-center w-12 h-12 bg-green-100 text-green-700 rounded-full mr-4 shadow">
+                        <i class="fas fa-box-open text-xl"></i>
+                    </span>
+                    Product & Stock Management
                 </h2>
                 <ul class="list-disc pl-8 text-gray-700 space-y-3">
-                    <li><strong>View Products:</strong> All items are listed in the products table with stock levels.</li>
-                    <li><strong>Add Product:</strong> Use <span class="text-green-600 font-semibold">"Add Product"</span> to insert a new book or item.</li>
-                    <li><strong>Edit Product:</strong> Update name, price, or quantity using the edit button.</li>
-                    <li><strong>Delete Product:</strong> Remove items no longer sold. This action is permanent.</li>
-                    <li><strong>Stock Updates:</strong> Keep stock quantities accurate to prevent selling out-of-stock items.</li>
+                    <li><strong>View Products:</strong> Products with stock levels shown.<br>(click on Product ID to See the product details)</li>
+                    <li><strong>Add Product:</strong> Use <span class="text-green-600 font-semibold">"Add Product"</span>.</li>
+                    <li><strong>Edit Product:</strong> Update name, price, or quantity.</li>
+                    <li><strong>Delete Product:</strong> Remove items permanently.</li>
+                    <li><strong>Stock Updates:</strong> Keep inventory accurate.</li>
                 </ul>
             </div>
 
             <!-- Billing Process -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">🧾</span> Billing Process
+            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-transform hover:-translate-y-1">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-700 rounded-full mr-4 shadow">
+                        <i class="fas fa-file-invoice text-xl"></i>
+                    </span>
+                    Billing Process
                 </h2>
                 <ol class="list-decimal pl-8 text-gray-700 space-y-3">
-                    <li>Go to <strong>Billing</strong> section from the menu.</li>
-                    <li>Select a customer (or add a new one).</li>
-                    <li>Search and add products to the bill by name or ID.</li>
+                    <li>Go to <strong>Billing</strong> section.</li>
+                    <li>Select or add a customer.</li>
+                    <li>Search & add products by name or ID.</li>
                     <li>Confirm quantities and pricing.</li>
-                    <li>Click <span class="text-green-600 font-semibold">"Generate Invoice"</span> to complete the sale.</li>
-                    <li>System automatically updates stock and saves the transaction.</li>
+                    <li>Click <span class="text-green-600 font-semibold">"Generate Invoice"</span>.</li>
+                    <li>Stock updates automatically.</li>
                 </ol>
             </div>
 
             <!-- Reports -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">📊</span> Reports & Analytics
+            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-transform hover:-translate-y-1">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-700 rounded-full mr-4 shadow">
+                        <i class="fas fa-chart-bar text-xl"></i>
+                    </span>
+                    Reports & Analytics
                 </h2>
-                <p class="text-gray-700 mb-3">Admins can access reports to monitor business performance:</p>
                 <ul class="list-disc pl-8 text-gray-700 space-y-3">
-                    <li><strong>Sales Reports:</strong> Filter by date range to view sales totals.</li>
-                    <li><strong>Inventory Reports:</strong> See which products are running low.</li>
-                    <li><strong>Export:</strong> Download reports for offline analysis.</li>
+                    <li><strong>Sales Reports:</strong> Filter by date.</li>
+                    <li><strong>Inventory Reports:</strong> Track low-stock products.</li>
                 </ul>
             </div>
 
             <!-- Notifications -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">🔔</span> Notifications
+            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-transform hover:-translate-y-1">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="flex items-center justify-center w-12 h-12 bg-yellow-100 text-yellow-700 rounded-full mr-4 shadow">
+                        <i class="fas fa-bell text-xl"></i>
+                    </span>
+                    Notifications
                 </h2>
                 <ul class="list-disc pl-8 text-gray-700 space-y-3">
-                    <li>View all alerts from the <strong>Notifications</strong> menu.</li>
-                    <li>System sends reminders for low stock and pending bills.</li>
-                    <li>Click a notification to view related records.</li>
+                    <li>All alerts from <strong>Notifications</strong> menu.</li>
+                    <li>Reminders for low stock & pending bills.</li>
+                    <li>Click to view related records.</li>
                 </ul>
             </div>
 
             <!-- Support -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-4 text-indigo-700 flex items-center">
-                    <span class="mr-3 text-3xl">📞</span> Contact Support
+            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-transform hover:-translate-y-1">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="flex items-center justify-center w-12 h-12 bg-red-100 text-red-700 rounded-full mr-4 shadow">
+                        <i class="fas fa-headset text-xl"></i>
+                    </span>
+                    Contact Support
                 </h2>
                 <p class="text-gray-700 leading-relaxed">
-                    For any issues or questions not covered here, please contact the system administrator:
-                    <br><strong class="block mt-2">Email:</strong> <a href="mailto:support@pahanaedu.lk" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200">support@pahanaedu.lk</a>
+                    For any issues not covered here, contact the administrator:
+                    <br><strong class="block mt-2">Email:</strong> 
+                    <a href="mailto:support@pahanaedu.lk" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200">support@pahanaedu.lk</a>
                     <br><strong>Phone:</strong> +94 77 123 4567
                 </p>
             </div>
+
         </div>
     </div>
 
