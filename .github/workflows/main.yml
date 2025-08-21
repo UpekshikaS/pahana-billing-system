@@ -19,8 +19,16 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Build with Maven
+      # Backend build
+      - name: Build Backend (Server)
+        working-directory: ./PahanaEdu-BookShop-Server
         run: mvn clean verify
 
-      - name: Run Tests
+      - name: Run Backend Tests
+        working-directory: ./PahanaEdu-BookShop-Server
         run: mvn test
+
+      # Frontend build
+      - name: Build Frontend
+        working-directory: ./PahanaEdu-BookShop-Frontend
+        run: mvn clean verify
