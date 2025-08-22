@@ -115,3 +115,49 @@ CREATE TABLE `discounts` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- Insert table data
+-- Insert User
+INSERT INTO `users` (`user_id`, `username`, `password_hash`, `role`, `name`, `email`, `phone`, `address`, `created_at`, `updated_at`)
+VALUES
+    (1, 'admin', '$2a$10$f5aw7hihsU0yvVCzXtRtieVL74EzjKKWQxBKiAJ6PuIvtYTezkRyy', 'ADMIN', 'Administrator', 'admin@gmail.com', '0112345986', 'No 110, Main Street, Colombo', '2025-08-01 14:00:51', '2025-08-05 22:44:28'),
+    (6, 'cash', '$2a$10$oHmu4Gr233QK9CjYJJYiBOk4ipjNk1sfGZihew6qOYBAnzGckTqc2', 'CASHIER', 'Cashier', 'cashier@gmail.com', '0719876543', '1405 W. 178th Street, Colombo', '2025-08-01 22:48:18', '2025-08-08 23:11:00');
+
+
+-- Insert Customers
+INSERT INTO `customers` (`customer_id`, `account_number`, `name`, `address`, `telephone`, `units_consumed`, `created_at`, `updated_at`)
+VALUES
+    (1, 'CUST-001', 'Amal Gamage', '123 Galle Road, Colombo 03', '0771234510', 15.00, '2025-08-01 14:00:55', '2025-08-21 06:08:15'),
+    (2, 'CUST-002', 'Bimal Jayakodi', '45 Marine Drive, Dehiwala', '0719876562', 30.00, '2025-08-01 14:00:55', '2025-08-20 22:38:01'),
+    (3, 'CUST-003', 'Kamal Perera', '78 High Level Road, Nugegoda', '0765551234', 9.00, '2025-08-01 14:00:55', '2025-08-20 22:38:44'),
+    (4, 'CUST-004', 'Fathima Rizwan', '90 Hill Street, Kandy', '0754448899', 6.00, '2025-08-01 14:00:55', '2025-08-13 21:49:19');
+
+-- Insert Products
+INSERT INTO `products` (`product_id`, `item_id`, `name`, `description`, `price`, `stock_quantity`, `created_at`, `updated_at`)
+VALUES
+    (1, 'BK-1001', 'Maths Grade 10', 'Mathematics textbook for Grade 10', 950.00, 1, '2025-08-01 14:00:59', '2025-08-21 00:03:25'),
+    (2, 'BK-1002', 'Science Grade 11', 'Science textbook for Grade 11', 1100.00, 99, '2025-08-01 14:00:59', '2025-08-21 06:08:15'),
+    (3, 'ST-2001', 'Blue Pen', 'Pack of 10 blue pens', 150.00, 30, '2025-08-01 14:00:59', '2025-08-20 22:38:01'),
+    (4, 'ST-2002', 'Notebook A5', '200 pages ruled notebook', 200.00, 103, '2025-08-01 14:00:59', '2025-08-14 21:23:53'),
+    (5, 'BK-1003', 'English Grade 9', 'English textbook for Grade 9', 890.00, 20, '2025-08-01 14:00:59', '2025-08-15 04:39:31');
+
+-- Insert Invoices
+INSERT INTO `invoices` (`invoice_id`, `invoice_number`, `customer_id`, `user_id`, `invoice_date`, `total_amount`, `discount_amount`, `net_amount`, `payment_status`)
+VALUES
+    (1, 'INV-20250810-1754799824', 1, 1, '2025-08-10 09:53:44', 1100.00, 10.00, 1090.00, 'PAID'),
+    (2, 'INV-20250810-1754800804', 1, 1, '2025-08-10 10:10:04', 950.00, 10.00, 940.00, 'PAID'),
+    (3, 'INV-20250811-1754880303', 4, 1, '2025-08-11 08:15:03', 3000.00, 0.00, 3000.00, 'PAID'),
+    (4, 'INV-20250811-1754880406', 4, 1, '2025-08-11 08:16:46', 1900.00, 0.00, 1900.00, 'PAID'),
+    (5, 'INV-20250813-1755101539', 1, 1, '2025-08-13 21:42:19', 950.00, 50.00, 900.00, 'PAID'),
+    (6, 'INV-20250814-1755186833', 1, 1, '2025-08-14 21:23:53', 3960.00, 10.00, 3950.00, 'PAID'),
+    (7, 'INV-20250814-1755187015', 3, 1, '2025-08-14 21:26:55', 2140.00, 40.00, 2100.00, 'PAID'),
+    (8, 'INV-20250815-1755212971', 2, 1, '2025-08-15 04:39:31', 3740.00, 40.00, 3700.00, 'PAID'),
+    (9, 'INV-20250820-1755709681', 2, 1, '2025-08-20 22:38:01', 3700.00, 0.00, 3700.00, 'PAID'),
+    (10, 'INV-20250820-1755709724', 3, 1, '2025-08-20 22:38:44', 1620.00, 20.00, 1600.00, 'PAID');
+
+-- Insert Notifications
+INSERT INTO `notifications` (`notification_id`, `user_id`, `message`, `is_read`, `created_at`)
+VALUES
+    (1, NULL, 'Customer \'Bimal Jayakodi\' has been updated.',1, '2025-08-20 22:39:55'),    
+    (2, NULL, 'A new customer \'Mosh Hamadani\' has been added.',0, '2025-08-20 22:40:57'),
+    (3, NULL, 'Customer \'Mosh Hamadani\' has been deleted.',0, '2025-08-20 22:40:21');
